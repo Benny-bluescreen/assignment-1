@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 class User {
     constructor(username, password) {
         this.username = username;
@@ -5,19 +7,17 @@ class User {
     }
 
     static FetchDataFromJsonFile() {
-        const fs = require('fs');
-        const data = fs.readFileSync('UserData/UserData.json');
-        return data;
+        const userData = fs.readFileSync('UserData/UserData.json');
+        const users = JSON.parse(userData);
+        return users;
     }
 
     static WriteDataToJsonFile(data) {
-        const fs = require('fs');
         fs.writeFileSync('UserData/UserData.json', JSON.stringify(data, null, 2)); // Skriver och Prettify JSON (Fixar till den så inte allt är på samma rad)
     }
 
     static CreateUser(username, password) {
-        const userData = User.FetchDataFromJsonFile();
-        const users = JSON.parse(userData);
+        const users = User.FetchDataFromJsonFile();
         
         for (let user of users) {
             if (user.username === username) {
@@ -40,8 +40,7 @@ class User {
         return regex.test(password);
     }
     static Login(username, password) {
-        let userData = User.FetchDataFromJsonFile();
-        const users = JSON.parse(userData);
+        let users = User.FetchDataFromJsonFile();
 
         for (let user of users) {
             if (user.username === username && user.password === password) {
@@ -53,8 +52,7 @@ class User {
     }
 
     static ChangePassword(username, oldPassword, newPassword) {
-        const userData = User.FetchDataFromJsonFile();
-        const users = JSON.parse(userData);
+        const users = User.FetchDataFromJsonFile();
 
         let user = users.find(user => user.username === username);
         
@@ -79,8 +77,7 @@ class User {
     }
 
     static ShowPasswords() {
-        const userData = User.FetchDataFromJsonFile();
-        const users = JSON.parse(userData);
+        const users = User.FetchDataFromJsonFile();
 
         for (let user of users) {
             console.log(`Användarnamn: ${user.username}, Lösenord: ${user.password}`);
