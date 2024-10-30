@@ -1,5 +1,5 @@
 const fileScripts = require('./ReadWriteToJson.js');
-const passwordScripts = require('./Passwords.js');
+const passwordScripts = require('./Password.js');
 const User = require('../Classes/User.js');
 
 function CreateUser(username, password) {

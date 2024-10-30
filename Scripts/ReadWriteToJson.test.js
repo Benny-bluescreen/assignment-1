@@ -27,3 +27,29 @@ describe('WriteDataToJsonFile', () => {
         expect(() => WriteDataToJsonFile({ name: 'Test User' })).toThrow('Skrivfel');
     });
 });
+
+describe('FetchDataFromJsonFile', () => {
+    it('hämtar data från UserData.json filen', () => {
+        const data = { name: 'Test User', age: 30 };
+        fs.readFileSync.mockReturnValue(JSON.stringify(data));
+
+        const result = FetchDataFromJsonFile();
+
+        expect(result).toEqual(data);
+        expect(fs.readFileSync).toHaveBeenCalledWith('UserData/UserData.json');
+    });
+
+    it('kastar ett fel om läsning misslyckas', () => {
+        fs.readFileSync.mockImplementation(() => {
+            throw new Error('Läsfel');
+        });
+
+        expect(() => FetchDataFromJsonFile()).toThrow('Läsfel');
+    });
+
+    it('returnerar ett tomt objekt om JSON är ogiltig', () => {
+        fs.readFileSync.mockReturnValue('ogiltig JSON');
+
+        expect(() => FetchDataFromJsonFile()).toThrow(SyntaxError);
+    });
+});

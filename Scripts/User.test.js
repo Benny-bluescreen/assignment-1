@@ -1,10 +1,10 @@
 const { CreateUser } = require('./User');
 const fileScripts = require('./ReadWriteToJson.js');
-const passwordScripts = require('./Passwords.js');
+const passwordScripts = require('./Password.js');
 const User = require('../Classes/User.js');
 
 jest.mock('./ReadWriteToJson.js');
-jest.mock('./Passwords.js');
+jest.mock('./Password.js');
 jest.mock('../Classes/User.js');
 
 describe('CreateUser', () => {

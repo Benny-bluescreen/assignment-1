@@ -1,11 +1,11 @@
 [
   {
-    "username": "user1",
-    "password": "password1"
+    "username": "user",
+    "password": "password"
   },
   {
     "username": "1",
-    "password": "Test1234!"
+    "password": "2"
   },
   {
     "username": "Test",

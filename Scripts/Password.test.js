@@ -1,4 +1,4 @@
-const { ChangePassword } = require('./Passwords.js');
+const { ChangePassword, ShowPasswords } = require('./Password.js');
 const file = require('./ReadWriteToJson.js');
 
 jest.mock('./ReadWriteToJson.js');
@@ -40,5 +40,34 @@ describe('ChangePassword', () => {
         expect(result).toBe('Lösenordet har ändrats');
         expect(users[0].password).toBe('NewPassword1!');
         expect(file.WriteDataToJsonFile).toHaveBeenCalledWith(users);
+    });
+});
+
+describe('ShowPasswords', () => {
+    beforeEach(() => {
+        file.FetchDataFromJsonFile.mockClear();
+        console.log = jest.fn();
+    });
+
+    it('ska skriva ut alla användarnamn och lösenord', () => {
+        const users = [
+            { username: 'user1', password: 'Password1!' },
+            { username: 'user2', password: 'Password2!' }
+        ];
+        file.FetchDataFromJsonFile.mockReturnValue(users);
+
+        ShowPasswords();
+
+        expect(console.log).toHaveBeenCalledWith('Användarnamn: user1, Lösenord: Password1!');
+        expect(console.log).toHaveBeenCalledWith('Användarnamn: user2, Lösenord: Password2!');
+        expect(console.log).toHaveBeenCalledWith('Visade alla användare och lösenord \n');
+    });
+
+    it('ska skriva ut ett meddelande om det inte finns några användare', () => {
+        file.FetchDataFromJsonFile.mockReturnValue([]);
+
+        ShowPasswords();
+
+        expect(console.log).toHaveBeenCalledWith('Visade alla användare och lösenord \n');
     });
 });

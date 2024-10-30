@@ -1,5 +1,5 @@
 const file = require('./ReadWriteToJson.js');
-const passwordScripts = require('./Passwords.js');
+const passwordScripts = require('./Password.js');
 
 function ShowPasswords() {
     const users = file.FetchDataFromJsonFile();

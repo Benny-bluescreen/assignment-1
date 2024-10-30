@@ -1,4 +1,4 @@
-const { Login } = require('./Login');
+const { Login } = require('./Login.js');
 const fileScripts = require('./ReadWriteToJson.js');
 
 jest.mock('./ReadWriteToJson.js');
