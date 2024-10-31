@@ -8,7 +8,7 @@ function Login(username, password) {
             return true;
         }
     }
-    
+
     return "Kan inte logga in på grund av felaktiga användaruppgifter";
 }
 
