@@ -1,6 +1,9 @@
 const { clear } = require('console');
 const User = require('./Classes/User.js');
 const prompt = require('prompt-sync')();
+const loginScripts = require('./Scripts/Login.js');
+const userScripts = require('./Scripts/User.js');
+const passwordScripts = require('./Scripts/Password.js');
 
 function mainMenu() {
     console.log("Huvudmeny");
@@ -16,26 +19,22 @@ function mainMenu() {
             case '1':
                 clear();
                 console.log("Logga in");
-                RecieveInputAndCallMethod(new Array('Användarnamn: ', 'Lösenord: '), User.Login);    
-                mainMenu();
+                RecieveInputAndCallMethod(new Array('Användarnamn: ', 'Lösenord: '), loginScripts.Login);    
                 break;
             case '2':
                 clear();    
                 console.log("Byt lösenord");
-                RecieveInputAndCallMethod(new Array('Användarnamn: ', 'Ditt gamla lösenord: ', 'Nytt lösenord: '), User.ChangePassword);   
-                mainMenu();
+                RecieveInputAndCallMethod(new Array('Användarnamn: ', 'Ditt gamla lösenord: ', 'Nytt lösenord: '), passwordScripts.ChangePassword);   
                 break;
             case '3':
                 clear();
                 console.log("Lägg till användare");
-                RecieveInputAndCallMethod(new Array('Användarnamn: ', 'Lösenord: '), User.CreateUser);
-                mainMenu();
+                RecieveInputAndCallMethod(new Array('Användarnamn: ', 'Lösenord: '), userScripts.CreateUser);
                 break;
             case '4':
                 clear();
                 console.log("Se lösenorden");
-                RecieveInputAndCallMethod(new Array(), User.ShowPasswords);
-                mainMenu();
+                RecieveInputAndCallMethod(new Array(), passwordScripts.ShowPasswords);
                 break;
             case '5':
                 console.log("Avslutar programmet...");
@@ -44,7 +43,6 @@ function mainMenu() {
             default:
                 clear();
                 console.log("Felaktigt val, försök igen.");
-                mainMenu();
                 break;
         }
 }
@@ -78,4 +76,5 @@ function RecieveInputAndCallMethod(inputPrompts, functionToCall) {
     }
 }
 
-mainMenu();
+while (true)
+    mainMenu();
