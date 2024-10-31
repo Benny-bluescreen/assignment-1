@@ -16,7 +16,7 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +33,7 @@ jobs:
 
       - name: Build project
         run: npm run build
-  
+jobs:
   test:
     runs-on: ubuntu-latest
 
