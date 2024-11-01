@@ -22,11 +22,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Run Super Linter
-      uses: github/super-linter@v4
-      env:
-        DEFAULT_BRANCH: main
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Run ESLint
+      run: npx eslint . --ext .js
 
     - name: Install dependencies
       run: npm install
