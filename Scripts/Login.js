@@ -5,11 +5,11 @@ function Login(username, password) {
 
   for (const user of users) {
     if (user.username === username && user.password === password) {
-      return true
+      return true;
     }
   }
 
-  return "Kan inte logga in på grund av felaktiga användaruppgifter";
+  return 'Kan inte logga in på grund av felaktiga användaruppgifter';
 }
 
 module.exports = { Login };
