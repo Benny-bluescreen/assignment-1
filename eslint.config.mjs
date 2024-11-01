@@ -12,8 +12,8 @@ export default [
   {
     rules:
     {
-      semi: "error", "prefer-const": "error",
-      indent: ["error", 2]
+      "prefer-const": "error",
+      "indent": ["error", 2]
     }
   }
 ];
