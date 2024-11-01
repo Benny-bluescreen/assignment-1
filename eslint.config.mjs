@@ -8,7 +8,7 @@ export default [
   {
     rules:
     {
-      "no-extra-semi": "error",
+      "no-extra-semi": 'error',
       "no-unused-vars": "error",
       "prefer-const": "error",
       "indent": ["error", 2],
