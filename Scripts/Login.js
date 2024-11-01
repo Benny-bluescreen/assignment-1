@@ -4,7 +4,7 @@ function Login(username, password) {
   const users = fileScripts.FetchDataFromJsonFile();
 
   for (const user of users) {
-    if (user.username === username && user.password === password) {
+      if (user.username === username && user.password === password) {
       return true;
     }
   }
