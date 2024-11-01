@@ -1,5 +1,4 @@
 const { clear } = require('console');
-const User = require('./Classes/User.js');
 const prompt = require('prompt-sync')();
 const loginScripts = require('./Scripts/Login.js');
 const userScripts = require('./Scripts/User.js');

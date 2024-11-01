@@ -1,8 +1,4 @@
 
-import pluginJs from "@eslint/js";
-import pluginJest from "eslint-plugin-jest";
-
-
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   // {pluginJs.configs.recommended,
@@ -12,6 +8,9 @@ export default [
   {
     rules:
     {
+      // "semi": "error",
+      "no-extra-semi": "error",
+      "no-unused-vars": "error",
       "prefer-const": "error",
       "indent": ["error", 2]
     }
