@@ -4,7 +4,10 @@ const User = require("../Classes/User.js");
 
 function CreateUser(username, password) {
   const users = fileScripts.FetchDataFromJsonFile();
-    
+
+  if ((!username ||username === "") || (!password || password === "")) 
+    return "Användarnamnet eller lösenordet får inte vara tomt";
+
   for (const user of users) {
     if (user.username === username) {
       return "Användarnamnet finns redan";

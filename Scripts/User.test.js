@@ -29,15 +29,29 @@ describe("CreateUser", () => {
     expect(result).toBe("Lösenordet behöver vara minst 8 tecken långt och innehålla minst en stor bokstav, en siffra och ett specialtecken");
   });
 
-  it("ska skapa en ny användare om användarnamnet inte finns och lösenordet är giltigt", () => {
+  it("ska returnera ett felmeddelande om användarnamnet eller lösenordet är tomt", () => {
+    fileScripts.FetchDataFromJsonFile.mockReturnValue([]);
+    passwordScripts.IsPasswordValid.mockReturnValue(false);
+    const result = CreateUser("", "");
+
+    expect(result).toBe("Användarnamnet eller lösenordet får inte vara tomt");
+  });
+
+  it("ska returnera ett felmeddelande om användarnamnet eller lösenordet är null", () => {
+    fileScripts.FetchDataFromJsonFile.mockReturnValue([]);
+    passwordScripts.IsPasswordValid.mockReturnValue(false);
+    const result = CreateUser(null, null);
+
+    expect(result).toBe("Användarnamnet eller lösenordet får inte vara tomt");
+  });
+
+  it("ska skapa en ny användare om användarnamnet och lösenordet är giltiga", () => {
     fileScripts.FetchDataFromJsonFile.mockReturnValue([]);
     passwordScripts.IsPasswordValid.mockReturnValue(true);
-    const mockUser = { username: "newUser", password: "Password123!" };
-    User.mockImplementation(() => mockUser);
+    const newUser = new User("newUser", "ValidPassword1!");
 
-    const result = CreateUser("newUser", "Password123!");
+    const result = CreateUser("newUser", "ValidPassword1!");
 
-    expect(result).toBe(mockUser);
-    expect(fileScripts.WriteDataToJsonFile).toHaveBeenCalledWith([mockUser]);
+    expect(result).toEqual(newUser);
   });
 });

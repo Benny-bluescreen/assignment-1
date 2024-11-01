@@ -14,6 +14,8 @@ export default [
       "indent": ["error", 2],
       "quotes": ["error", "double"],
       "semi": ["error", "always"],
+      "no-multiple-empty-lines": ["error", { "max": 1 }],
+      "eol-last": ["error", "always"]
     }
   }
 ];
