@@ -1,4 +1,4 @@
-const fileScripts = require('./ReadWriteToJson.js');
+const fileScripts = require("./ReadWriteToJson.js");
 
 function Login(username, password) {
   const users = fileScripts.FetchDataFromJsonFile();
@@ -9,7 +9,7 @@ function Login(username, password) {
     }
   }
 
-  return 'Kan inte logga in på grund av felaktiga användaruppgifter';
+  return "Kan inte logga in på grund av felaktiga användaruppgifter";
 }
 
 module.exports = { Login };

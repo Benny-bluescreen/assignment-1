@@ -11,7 +11,9 @@ export default [
       "no-extra-semi": "error",
       "no-unused-vars": "error",
       "prefer-const": "error",
-      "indent": ["error", 2]
+      "indent": ["error", 2],
+      "quotes": ["error", "double"],
+      "semi": ["error", "always"],
     }
   }
 ];

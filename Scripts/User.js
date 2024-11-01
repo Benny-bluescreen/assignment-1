@@ -1,6 +1,6 @@
-const fileScripts = require('./ReadWriteToJson.js');
-const passwordScripts = require('./Password.js');
-const User = require('../Classes/User.js');
+const fileScripts = require("./ReadWriteToJson.js");
+const passwordScripts = require("./Password.js");
+const User = require("../Classes/User.js");
 
 function CreateUser(username, password) {
   const users = fileScripts.FetchDataFromJsonFile();
